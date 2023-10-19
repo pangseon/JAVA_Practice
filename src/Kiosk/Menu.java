@@ -21,20 +21,16 @@ public class Menu {
         String info;
         int number;
         Menu[] menus;
-
         public Menu(String menu_name,String menu_info){
                 this.name = menu_name;
                 this.info = menu_info;
                 this.number=0;
                 this.products= new product[10];
-
         }
         public Menu(){
                 this.number=0;
                 this.menus = new Menu[10];
         }
-        //
-
         public void addMenu(String menu_name, String menu_info){
                 menus[number] = new Menu(menu_name,menu_info);
                 System.out.println(menus[number].name+menus[number].info);
@@ -49,9 +45,4 @@ public class Menu {
                         }
                 }
         }
-
-
-
-
-
 }
