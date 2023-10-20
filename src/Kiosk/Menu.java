@@ -1,5 +1,7 @@
 package Kiosk;
 
+import java.util.Scanner;
+
 public class Menu {
 
         // menu[0] => burger , menu[1] = ice
@@ -21,6 +23,9 @@ public class Menu {
         String info;
         int number;
         Menu[] menus;
+
+        order order;
+
         public Menu(String menu_name,String menu_info){
                 this.name = menu_name;
                 this.info = menu_info;
@@ -30,12 +35,16 @@ public class Menu {
         public Menu(){
                 this.number=0;
                 this.menus = new Menu[10];
+                this.order = new order();
         }
+        public Menu(int i){
+                this.number = 0;
+        }
+
+
         public void addMenu(String menu_name, String menu_info){
                 menus[number] = new Menu(menu_name,menu_info);
-                System.out.println(menus[number].name+menus[number].info);
                 this.number++;
-                System.out.println(number);
         }
         public void addProduct(String menu_name, String product_name,String product_info, double price){
                 for (int i=0; i<this.number; i++){
@@ -45,4 +54,31 @@ public class Menu {
                         }
                 }
         }
+        public void onboard(){
+                this.menu_onboard();
+                Scanner sc = new Scanner(System.in);
+                int choice_menu = sc.nextInt();
+                if(choice_menu>0 && choice_menu<5){
+
+                }
+                order.add_Basket(this);
+
+
+        }
+        public void products_onboard(int a){
+                for (int i = 0; i<this.number;i++){
+                        if (i==a-1){
+                                for (int j = 0; j<menus[i].number;j++) {
+                                        System.out.println(j+1+"."+"|"+menus[i].products[j].name+"|"+menus[i].products[j].price+"|"+menus[i].products[j].info);
+                                }
+                        }
+                }
+        }
+        public void menu_onboard(){
+                for (int i = 0; i<this.number; i++){
+                        System.out.println((i+1)+"."+"|"+menus[i].name+"|"+menus[i].info);
+                }
+        }
+
+
 }
